@@ -12,6 +12,11 @@
           >About this site</router-link
         ></span
       >
+      <span class="nav-link">
+        <router-link v-bind:to="{ name: 'StatesVisited' }"
+          >Visited States</router-link
+        >
+      </span>
     </div>
 
     <p>

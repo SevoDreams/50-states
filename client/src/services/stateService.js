@@ -21,4 +21,10 @@ export default {
       return response.data;
     });
   },
+
+  getVisitedStates() {
+    return axios.get("/api/visited").then((response) => {
+      return response.data;
+    });
+  },
 };

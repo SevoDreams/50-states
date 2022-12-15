@@ -24,6 +24,27 @@ router.get("/state/:name", function (req, res, name) {
     .catch((err) => next(err));
 });
 
+// router.get("/visited", function (req, res, next) {
+//   States.findAll({ order: ["name"] })
+//     .then((states) => {
+//       return res.json(states);
+//     })
+//     .catch((err) => next(err)); // passes error handling off to another file
+// });
+
+router.get("/visited", function (req, res, next) {
+  States.findAll({ order: ["name"] })
+    .then((states) => {
+      let visitedStates = states.filter((state) => state.visited === true);
+      if (visitedStates) {
+        return res.json(visitedStates);
+      } else {
+        return res.status(404).send("You've visited 0 states");
+      }
+    })
+    .catch((err) => next(err));
+});
+
 router.patch("/states/:name", function (req, res, next) {
   let stateName = req.params.name;
   let stateVisited = req.body.visited;
