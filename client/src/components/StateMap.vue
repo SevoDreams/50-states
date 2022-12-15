@@ -40,7 +40,7 @@ export default {
     };
   },
   mounted() {
-    this.state.name = this.$route.params.state;
+    this.state.name = this.$route.params.state; // Grabs the name from the url in routes (where we get this parameter)
     this.fetchStateData();
   },
   methods: {
@@ -71,6 +71,7 @@ export default {
       if (this.mapReady && this.dataReady) {
         // Todo - make sure map is correct
         this.$refs.map.leafletObject.setView(this.mapCenter, this.zoom);
+        // since we need a decent amount of preparation before we load our map, this if statement makes sure we circumvent any problems related to that
       }
     },
   },
